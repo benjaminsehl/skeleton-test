@@ -1,5 +1,5 @@
 import {redirect} from '@shopify/remix-oxygen';
-import {Form, useRouteError, isRouteErrorResponse} from '@remix-run/react';
+import {Form} from '@remix-run/react';
 
 export async function loader({context, params}) {
   const customerAccessToken = await context.session.get('customerAccessToken');
@@ -60,16 +60,4 @@ export default function AccountRegister() {
       <button type="submit">Sign up</button>
     </Form>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }

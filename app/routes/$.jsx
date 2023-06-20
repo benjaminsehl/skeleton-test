@@ -6,13 +6,17 @@
  * to show how you can do cool stuff w/ Hydrogen
  **/
 
-import {Link} from '@remix-run/react';
+export const meta = () => {
+  return [{title: '404 Not Found'}];
+};
+
+export async function loader() {
+  throw new Response(null, {
+    status: 404,
+    statusText: 'Not Found',
+  });
+}
 
 export default function NotFound() {
-  return (
-    <div>
-      <h1>Page not found</h1>
-      <Link to="/">Continue shopping</Link>
-    </div>
-  );
+  return <></>;
 }

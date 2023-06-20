@@ -5,12 +5,7 @@
  **/
 
 import {json} from '@shopify/remix-oxygen';
-import {
-  useLoaderData,
-  Link,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {useLoaderData, Link} from '@remix-run/react';
 import {
   Pagination__unstable as Pagination,
   getPaginationVariables__unstable as getPaginationVariables,
@@ -57,18 +52,6 @@ export default function Collections() {
       </Pagination>
     </>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data); // TODO: Remove this eslint rule
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }
 
 const COLLECTIONS_QUERY = `#graphql

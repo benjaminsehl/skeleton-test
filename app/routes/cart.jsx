@@ -1,9 +1,4 @@
-import {
-  Await,
-  useMatches,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {Await, useMatches} from '@remix-run/react';
 import {Suspense} from 'react';
 import {flattenConnection} from '@shopify/hydrogen';
 
@@ -59,16 +54,4 @@ export default function Cart() {
       </Await>
     </Suspense>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }

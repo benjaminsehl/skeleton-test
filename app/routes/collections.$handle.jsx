@@ -1,10 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
-import {
-  useLoaderData,
-  Link,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {useLoaderData, Link} from '@remix-run/react';
 import {
   Pagination__unstable as Pagination,
   getPaginationVariables__unstable as getPaginationVariables,
@@ -21,7 +16,7 @@ export async function loader({params: {handle}, context, request}) {
   });
 
   if (!collection) {
-    throw new Response(null, {status: 404});
+    throw new Response(null, {status: 404, statusText: 'Not found'});
   }
 
   return json({collection});
@@ -50,18 +45,6 @@ export default function Collections() {
       </Pagination>
     </>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }
 
 const COLLECTION_QUERY = `#graphql

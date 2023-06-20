@@ -1,10 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
-import {
-  useLoaderData,
-  Link,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {useLoaderData, Link} from '@remix-run/react';
 
 export async function loader({context: {storefront}}) {
   const data = await storefront.query(POLICIES_QUERY);
@@ -36,18 +31,6 @@ export default function PoliciesIndex() {
       })}
     </>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }
 
 const POLICIES_QUERY = `#graphql

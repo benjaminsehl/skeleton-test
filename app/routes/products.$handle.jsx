@@ -1,9 +1,5 @@
 import {defer} from '@shopify/remix-oxygen';
-import {
-  useLoaderData,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {useLoaderData} from '@remix-run/react';
 
 export async function loader({params: {handle}, context}) {
   const {product} = await context.storefront.query(PRODUCT_QUERY, {
@@ -32,18 +28,6 @@ export default function Products() {
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
     </>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }
 
 const PRODUCT_QUERY = `#graphql

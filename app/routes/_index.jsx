@@ -1,11 +1,6 @@
 import {json} from '@shopify/remix-oxygen';
 import {Image} from '@shopify/hydrogen';
-import {
-  useLoaderData,
-  Link,
-  useRouteError,
-  isRouteErrorResponse,
-} from '@remix-run/react';
+import {useLoaderData, Link} from '@remix-run/react';
 
 export async function loader({context}) {
   const {collection} = await context.storefront.query(HOME_QUERY, {
@@ -56,18 +51,6 @@ export default function Index() {
       </section>
     </>
   );
-}
-
-export function ErrorBoundary() {
-  const error = useRouteError();
-
-  if (isRouteErrorResponse(error)) {
-    console.error(error.status, error.statusText, error.data);
-    return <div>Route Error</div>;
-  } else {
-    console.error(error.message);
-    return <div>Thrown Error</div>;
-  }
 }
 
 const HOME_QUERY = `#graphql
