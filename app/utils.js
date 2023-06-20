@@ -1,3 +1,9 @@
+/**
+ * @TODO: Add others we found _essential_ in building the Demo Store
+ * Treat these like abstractions. They should be simple, low-level, etc.
+ * Add TSDoc for all utilities.
+ **/
+
 /*
   Recursively adds `to` and `target` attributes to links based on their url
   and resource type.
