@@ -37,7 +37,7 @@ export default function Index() {
           <h1>{collection.title}</h1>
         </Link>
       </section>
-      <section className="product-grid">
+      <section className="product-grid gap-4 md:gap-8">
         {collection.products.nodes.map((product) => (
           <Link key={product.id} to={`/products/${product.handle}`}>
             <Image
@@ -45,7 +45,7 @@ export default function Index() {
               aspectRatio="4/5"
               data={product.featuredImage}
             />
-            <h3>{product.title}</h3>
+            <h4>{product.title}</h4>
           </Link>
         ))}
       </section>
