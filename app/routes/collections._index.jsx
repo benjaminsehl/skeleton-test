@@ -31,13 +31,13 @@ export default function Collections() {
   const {collections} = useLoaderData();
 
   return (
-    <>
+    <section className="grid gap-4">
       <h1>Collections</h1>
       <Pagination connection={collections}>
         {({nodes, PreviousLink, NextLink}) => (
           <>
             <PreviousLink>Load previous</PreviousLink>
-            <ul>
+            <ul className="grid gap-2">
               {nodes.map((collection) => (
                 <li key={collection.id}>
                   <Link to={`/collections/${collection.handle}`}>
@@ -50,7 +50,7 @@ export default function Collections() {
           </>
         )}
       </Pagination>
-    </>
+    </section>
   );
 }
 

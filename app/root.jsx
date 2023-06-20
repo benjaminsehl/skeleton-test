@@ -150,13 +150,13 @@ export function ErrorBoundary() {
         </head>
         <body>
           <Layout>
-            <div>
+            <section>
               <h1>
                 {error.status ? title[error.status] : 'Something went wrong'}
               </h1>
               <p>{error.status}</p>
               <p>{error.data.message}</p>
-            </div>
+            </section>
           </Layout>
           <Scripts />
         </body>
@@ -181,10 +181,10 @@ export function ErrorBoundary() {
       </head>
       <body>
         <Layout>
-          <div>
+          <section>
             <h1>Something’s wrong</h1>
             <p>{errorMessage}</p>
-          </div>
+          </section>
         </Layout>
         <Scripts />
       </body>

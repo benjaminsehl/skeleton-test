@@ -12,7 +12,7 @@ export default function Layout({children}) {
        * Use Accept-Language header to suggest language.
        * Match against `availableLanguages`.
        */}
-      <header>
+      {/* <header>
         Choose another country or region to see content specific to your
         location and shop online.
         <form action="?language=en&country=us">
@@ -22,9 +22,9 @@ export default function Layout({children}) {
           </select>
           <button>Continue</button>
         </form>
-      </header>
-      <header className="sticky top-0">
-        <section className="flex gap-4 items-baseline">
+      </header> */}
+      <header className="sticky top-0 py-4">
+        <section className="flex gap-4 justify-between">
           <nav className="flex gap-4 items-baseline">
             <NavLink to="/" end>
               <Logo shop={shop} />
@@ -36,12 +36,12 @@ export default function Layout({children}) {
             ))}
           </nav>
           <nav className="flex gap-4 items-baseline">
-            <Link to={customer.isAuthenticated ? '/account' : '/account/login'}>
-              Account
-            </Link>
             <form action="/search">
               <input placeholder="Search" name="query" type="search" />
             </form>
+            <Link to={customer.isAuthenticated ? '/account' : '/account/login'}>
+              Account
+            </Link>
             <MiniCart />
           </nav>
         </section>
@@ -62,9 +62,9 @@ function Logo({shop}) {
 function MiniCart() {
   const {cart} = useRouteLoaderData('root');
   return (
-    <details>
+    <details className="minicart">
       <summary>Cart ({cart.totalQuantity})</summary>
-      <ul>
+      <ul className="drawer-right">
         {cart.lines.nodes.map((item) => (
           <li key={item.id}>
             <Link to={`/products/${item.merchandise.product.handle}`}>

@@ -22,11 +22,11 @@ export default function Products() {
   const {title, vendor, descriptionHtml} = product;
 
   return (
-    <>
+    <section>
       <h1>{title}</h1>
       <h2>{vendor}</h2>
       <div dangerouslySetInnerHTML={{__html: descriptionHtml}} />
-    </>
+    </section>
   );
 }
 

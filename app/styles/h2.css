@@ -388,6 +388,10 @@ video {
 Hydrogen Classless Reset
 */
 
+body {
+  color: var(--colors-text, hsla(0, 0%, 0%, 0.87));
+}
+
 h1 {
   font-size: var(--fontSize-display, 4.236rem);
 }
@@ -451,4 +455,33 @@ section {
   margin-right: auto;
   padding-left: var(--spacing-4, 2vw);
   padding-right: var(--spacing-4, 2vw);
+}
+
+section:last-child {
+  padding-bottom: var(--spacing-8, 4vw);
+}
+
+.minicart {
+
+}
+
+.minicart > summary {
+  display: inline-block;
+}
+
+.minicart > .drawer-right {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.minicart[open] > .drawer-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(0%);
+  transition: transform 0.3s ease-in-out;
 }
