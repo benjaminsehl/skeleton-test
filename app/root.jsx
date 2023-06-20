@@ -7,7 +7,8 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from '@remix-run/react';
-import styles from './styles/h2-reset.css';
+import styles from './styles/app.css';
+import hydrogenReset from './styles/h2.css';
 import favicon from '../public/favicon.svg';
 import Layout from './components/Layout';
 import {parseMenu} from './utils';
@@ -15,6 +16,7 @@ import {parseMenu} from './utils';
 export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
+    {rel: 'stylesheet', href: hydrogenReset},
     {
       rel: 'preconnect',
       href: 'https://cdn.shopify.com',
@@ -132,6 +134,10 @@ export default function App() {
 export function ErrorBoundary() {
   const error = useRouteError();
 
+  const title = {
+    404: 'Not Found',
+  };
+
   // when true, this is what used to go to `CatchBoundary`
   if (isRouteErrorResponse(error)) {
     return (
@@ -145,8 +151,10 @@ export function ErrorBoundary() {
         <body>
           <Layout>
             <div>
-              <h1>Oops</h1>
-              <p>Status: {error.status}</p>
+              <h1>
+                {error.status ? title[error.status] : 'Something went wrong'}
+              </h1>
+              <p>{error.status}</p>
               <p>{error.data.message}</p>
             </div>
           </Layout>
@@ -159,16 +167,28 @@ export function ErrorBoundary() {
   // Don't forget to typecheck with your own logic.
   // Any value can be thrown, not just errors!
   let errorMessage = 'Unknown error';
-  if (false) {
-    errorMessage = error.message;
-  }
+  // if (someConditionConfirmedTrue) {
+  //   errorMessage = error.message;
+  // }
 
   return (
-    <div>
-      <h1>Uh oh ...</h1>
-      <p>Something went wrong.</p>
-      <pre>{errorMessage}</pre>
-    </div>
+    <html lang="en">
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Layout>
+          <div>
+            <h1>Something’s wrong</h1>
+            <p>{errorMessage}</p>
+          </div>
+        </Layout>
+        <Scripts />
+      </body>
+    </html>
   );
 }
 

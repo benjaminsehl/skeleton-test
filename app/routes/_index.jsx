@@ -5,7 +5,7 @@ import {useLoaderData, Link} from '@remix-run/react';
 export async function loader({context}) {
   const {collection} = await context.storefront.query(HOME_QUERY, {
     variables: {
-      handle: 'freestyle',
+      handle: 'winter',
     },
   });
 
@@ -31,13 +31,13 @@ export default function Index() {
         <Link to={`/collections/${collection.handle}`}>
           <Image
             style={{height: 'auto'}} // @TODO: This shouldn't be here/required
-            aspectRatio="16/9"
+            aspectRatio="2/1"
             data={collection.image}
           />
           <h1>{collection.title}</h1>
         </Link>
       </section>
-      <section>
+      <section className="product-grid">
         {collection.products.nodes.map((product) => (
           <Link key={product.id} to={`/products/${product.handle}`}>
             <Image

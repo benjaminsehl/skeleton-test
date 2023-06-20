@@ -38,10 +38,10 @@ export default function Collections() {
           <>
             <PreviousLink>Load previous</PreviousLink>
             <ul>
-              {nodes.map((product) => (
-                <li key={product.id}>
-                  <Link to={`/products/${product.handle}`}>
-                    {product.title}
+              {nodes.map((collection) => (
+                <li key={collection.id}>
+                  <Link to={`/collections/${collection.handle}`}>
+                    {collection.title}
                   </Link>
                 </li>
               ))}

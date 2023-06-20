@@ -23,32 +23,19 @@ export default function Layout({children}) {
           <button>Continue</button>
         </form>
       </header>
-      <header>
-        <section>
-          <nav>
-            <NavLink to="/">
-              {({isActive}) =>
-                isActive ? (
-                  <h1>
-                    <Logo shop={shop} />
-                  </h1>
-                ) : (
-                  <h2>
-                    <Logo shop={shop} />
-                  </h2>
-                )
-              }
+      <header className="sticky top-0">
+        <section className="flex gap-4 items-baseline">
+          <nav className="flex gap-4 items-baseline">
+            <NavLink to="/" end>
+              <Logo shop={shop} />
             </NavLink>
-            <details>
-              <summary>Menu</summary>
-              {menu.items.map((item) => (
-                <NavLink key={item.to} to={item.to} target={item.target}>
-                  {item.title}
-                </NavLink>
-              ))}
-            </details>
+            {menu.items.map((item) => (
+              <NavLink key={item.to} to={item.to} target={item.target}>
+                {item.title}
+              </NavLink>
+            ))}
           </nav>
-          <nav>
+          <nav className="flex gap-4 items-baseline">
             <Link to={customer.isAuthenticated ? '/account' : '/account/login'}>
               Account
             </Link>
@@ -59,7 +46,7 @@ export default function Layout({children}) {
           </nav>
         </section>
       </header>
-      <main>{children}</main>
+      <main className="mx-auto max-w-screen-2xl">{children}</main>
     </>
   );
 }
