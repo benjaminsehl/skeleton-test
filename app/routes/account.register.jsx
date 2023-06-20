@@ -28,7 +28,7 @@ export const action = async ({request}) => {
     });
   }
 
-  // TODO Add register logic
+  // @TODO: Add register logic
 };
 
 export default function AccountRegister() {

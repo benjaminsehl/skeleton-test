@@ -25,8 +25,8 @@ export async function loader({context}) {
 
 /**
  * @TODO: Homepage
- * - Display first available collection
- * - Display top 8 products in a grid
+ * - [x] Display first available collection
+ * - [x] Display top 8 products in a grid (currently unstyled)
  */
 export default function Index() {
   const {collection} = useLoaderData();
@@ -44,14 +44,14 @@ export default function Index() {
       </section>
       <section>
         {collection.products.nodes.map((product) => (
-          <div key={product.id}>
+          <Link key={product.id} to={`/products/${product.handle}`}>
             <Image
               style={{height: 'auto'}} // This shouldn't be required
               aspectRatio="4/5"
               data={product.featuredImage}
             />
             <h3>{product.title}</h3>
-          </div>
+          </Link>
         ))}
       </section>
     </>
