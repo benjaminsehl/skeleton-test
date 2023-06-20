@@ -30,7 +30,7 @@ export default function Index() {
       <section>
         <Link to={`/collections/${collection.handle}`}>
           <Image
-            style={{height: 'auto'}} // This shouldn't be required
+            style={{height: 'auto'}} // @TODO: This shouldn't be here/required
             aspectRatio="16/9"
             data={collection.image}
           />
@@ -41,7 +41,7 @@ export default function Index() {
         {collection.products.nodes.map((product) => (
           <Link key={product.id} to={`/products/${product.handle}`}>
             <Image
-              style={{height: 'auto'}} // This shouldn't be required
+              style={{height: 'auto'}} // @TODO: This shouldn't be here/required
               aspectRatio="4/5"
               data={product.featuredImage}
             />

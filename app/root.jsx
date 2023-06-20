@@ -7,7 +7,7 @@ import {
   useRouteError,
   isRouteErrorResponse,
 } from '@remix-run/react';
-import styles from './styles/app.css';
+import styles from './styles/h2-reset.css';
 import favicon from '../public/favicon.svg';
 import Layout from './components/Layout';
 import {parseMenu} from './utils';
